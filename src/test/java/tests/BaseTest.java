@@ -1,19 +1,15 @@
+package tests;
 
 import com.codeborne.selenide.Configuration;
 import configs.Config;
 import io.qameta.allure.Epic;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.codeborne.selenide.Selenide.open;
-
 @Epic("Тестовый Эпик")
 public class BaseTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
     @BeforeAll
     static void setup() {
@@ -60,11 +56,8 @@ public class BaseTest {
         Configuration.savePageSource = Boolean.parseBoolean(Config.getInstance("local").getProperty("selenide.savePageSource"));
     }
 
-    @Test
-    @DisplayName("Тест название")
-    void test1() {
-        Logger logger = LoggerFactory.getLogger(BaseTest.class);
-        logger.info("Hello World");
-//        open("/text-box");
+    @AfterAll
+    static void cleanUp(){
+
     }
 }
